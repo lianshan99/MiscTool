@@ -1,0 +1,11 @@
+{
+  "music_list":[
+    {
+      "play_url": {
+        "url_list": [
+          "http://www.baidu.com"
+        ]
+      }
+    }
+  ]
+}
