@@ -2,8 +2,6 @@
 import unittest
 import requests
 import time
-import Passport
-import Rsa
 
 localtime = time.time()
 timpstamp = localtime.split('.')[0]
