@@ -60,9 +60,9 @@ def geturl_dy(filename):
     content = open(filename, encoding='utf-8-sig')
     content_json = json.load(content)
     array = []
-    musiclist_array = content_json['music_list']
+    musiclist_array = content_json['aweme_list']
     for musiclist in musiclist_array:
-        url = musiclist['play_url']['url_list'][0]
+        url = musiclist['video']['play_addr']['url_list'][0]
         array.append(url)
 #        print(url)
     return array
@@ -88,7 +88,8 @@ def geturl_txt(filename):
 #        print(url)
     return array
 
-# url_array = geturl_dy('dy.json')
-# url_array = geturl_ks('ks.json')
-# url_array = geturl_txt('url.txt')
-# download(url_array)
+url_array = geturl_dy('dy.json')
+#url_array = geturl_ks('ks.json')
+#print(url_array[0])
+#url_array = geturl_txt('url.txt')
+download(url_array)
