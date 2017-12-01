@@ -1,4 +1,4 @@
 {
-  "user_login.py": true,
+  "discuss_publish_test.py::DiscussPublicTest": true,
   "user_login.py::UserLoginTest": true
 }

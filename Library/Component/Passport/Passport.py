@@ -3,6 +3,7 @@ import Md5
 import Rsa
 
 
+
 class Identify():
     # 过滤一些不需要参与签名的数据
     def paraFilter(self, para_temp):
