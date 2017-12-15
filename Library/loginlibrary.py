@@ -21,10 +21,19 @@ class LoginLibrary():
         result = self.reqpost('/user/login', login_params)
         return result
 
-    def addsign(self,params):
-        params['time_stamp'] = timpstamp
+    def addsign(self, params):
+        params['time_stamp'] = str(time.time()).split('.')[0]
         params['client_type'] = 'android'
-        params['app_version'] = '2.2.3122'
+        params['app_version'] = '2.2.3204'
+        params['sign'] = Passport.Identify().buildRequestMysign(params, 'RSA')
+        return params
+
+    def addsomeparams(self, params, user, pwd):
+        params['token'] = self.gettoken(user, pwd)
+        params['uid'] = self.getuid(user, pwd)
+        params['time_stamp'] = str(time.time()).split('.')[0]
+        params['client_type'] = 'android'
+        params['app_version'] = '2.2.3204'
         params['sign'] = Passport.Identify().buildRequestMysign(params, 'RSA')
         return params
 
@@ -37,4 +46,3 @@ class LoginLibrary():
         result = self.getlogin(user, pwd)
         uid = result['data']['uid']
         return uid
-

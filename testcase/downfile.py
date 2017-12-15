@@ -44,7 +44,7 @@ def download(url_array):
     for url in url_array:
         try:
             r = requests.get(url)
-            file_name_mp4 = "D:\downloadvideo\ " + str(time.time()) + ".mp4"
+            file_name_mp4 = "D:\downloadvideo\ " + str(time.time()).split('.')[0] + ".mp4"
             with open(file_name_mp4, 'wb') as f:
                 f.write(r.content)
 

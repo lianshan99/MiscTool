@@ -12,26 +12,25 @@ pwd = '123456'
 
 class DiscussPublicTest(unittest.TestCase):
     def setUp(self):
-        self.url = 'http://api.klgwl.com/discuss/publish'
-        self.discuss_id = ''
+        self.url = 'http://api.klgwl.com/social/comment'
+        self.item_id = ''
 
-    def test_discuss_public_onlytest_success(self):
-        content = 'lianshan test' + str(time.time()).split('.')[0]
-        params = {"lang": "1", "tags": "1", "media_type": "1", "is_top": "0", "content": content,
-                  "open_location": "0", "scan_type": "1", "allow_download": "1"}
+    def test_add_comment(self):
+        content = str(time.time()).split('.')[0]
+        params = {"type": "discuss", "item_id": "34500", "content": content}
         params = loginlibrary.LoginLibrary().addsomeparams(params, user, pwd)
         print(params)
         r = requests.post(self.url, params=params)
         print(r.content.decode())
         result = r.json()
         self.assertEqual(result['result'], 1)
-        self.discuss_id = result['data']
 
-    def tearDown(self):
-        params = {"discuss_id": self.discuss_id}
+    def test_get_commentlist(self):
+        url = 'http://api.klgwl.com/social/commentList'
+        params = {"type": "discuss", "item_id": "34500"}
         params = loginlibrary.LoginLibrary().addsomeparams(params, user, pwd)
         print(params)
-        r = requests.post('http://api.klgwl.com/discuss/delete', params=params)
+        r = requests.post(url, params=params)
         print(r.content.decode())
         result = r.json()
         self.assertEqual(result['result'], 1)

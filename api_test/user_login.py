@@ -10,7 +10,6 @@ timpstamp = localtime.split('.')[0]
 user = '13631241428'
 pwd = '123456'
 
-
 class UserLoginTest(unittest.TestCase):
     def setUp(self):
         self.url = 'http://api.klgwl.com/user/login'
