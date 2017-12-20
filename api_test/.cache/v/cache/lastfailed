@@ -1,3 +1,7 @@
 {
+  "add_group_test.py::DiscussPublicTest::test_add_group": true,
+  "comment_test.py": true,
+  "comment_test.py::DiscussPublicTest::test_delete_commentlist": true,
+  "goupop_test.py": true,
   "user_login.py::UserLoginTest": true
 }

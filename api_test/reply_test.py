@@ -10,13 +10,13 @@ user = '13631241428'
 pwd = '123456'
 
 
-class CommentTest(unittest.TestCase):
+class ReplyTest(unittest.TestCase):
     def setUp(self):
-        self.url = 'http://api.klgwl.com/social/comment'
+        self.url = 'http://api.klgwl.com/social/reply'
 
-    def test_add_comment(self):  # 添加评论
+    def test_add_reply(self):  # 添加回复
         content = str(time.time()).split('.')[0]
-        params = {"type": "discuss", "item_id": "34500", "content": content}
+        params = {'type': 'discuss', 'comment_id': '2236', 'content': content}
         params = loginlibrary.LoginLibrary().addsomeparams(params, user, pwd)
         r = requests.post(self.url, params=params)
         result = r.json()

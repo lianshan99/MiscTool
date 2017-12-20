@@ -37,6 +37,14 @@ class LoginLibrary():
         params['sign'] = Passport.Identify().buildRequestMysign(params, 'RSA')
         return params
 
+    def addsomeparamsMD5(self, params):
+        params['time_stamp'] = str(time.time()).split('.')[0]
+        params['client_type'] = 'android'
+        params['app_version'] = '2.2.3204'
+        params['sign'] = Passport.Identify().buildRequestMysign(params, 'MD5')
+        params['sign_type'] = 'MD5'
+        return params
+
     def gettoken(self, user, pwd):
         result = self.getlogin(user, pwd)
         token = result['data']['token_info']['token']
