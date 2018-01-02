@@ -7,7 +7,7 @@ token1 = loginlibrary.LoginLibrary().gettoken('13631241428', '123456')
 token2 = loginlibrary.LoginLibrary().gettoken('13631231429', '123456')
 token3 = loginlibrary.LoginLibrary().gettoken('13631276795', '123456')
 url = 'http://api.klgwl.com/message/send'
-
+t = 'j'
 
 def sendmsg(i):
     # uid = loginlibrary.LoginLibrary().getuid('13631241428', '123456')
@@ -30,8 +30,11 @@ def Csendmsg(i):
     requests.post(url, params=params)
 
 
-for i in range(10):
+for i in range(500):
     print(i)
-    sendmsg(i + 1)
-    Bsendmsg(i + 1)
-    Csendmsg(i + 1)
+    sendmsg(t + str(i))
+    time.sleep(2)
+    Bsendmsg(t + str(i))
+    time.sleep(2)
+    Csendmsg(t + str(i))
+    time.sleep(2)
