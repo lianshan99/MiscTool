@@ -19,7 +19,10 @@ class LoginLibrary():
                         'device_id': 'tester', 'welcome': '0'}
         login_params = self.addsign(login_params)
         result = self.reqpost('/user/login', login_params)
-        return result
+        token = result['data']['token_info']['token']
+        uid = result['data']['uid']
+        data = {'token': token, 'uid': uid}
+        return data
 
     def addsign(self, params):
         params['time_stamp'] = str(time.time()).split('.')[0]
@@ -29,8 +32,11 @@ class LoginLibrary():
         return params
 
     def addsomeparams(self, params, user, pwd):
-        params['token'] = self.gettoken(user, pwd)
-        params['uid'] = self.getuid(user, pwd)
+        data = self.getlogin(user, pwd)
+        token = data.get('token')
+        uid = data.get('uid')
+        params['token'] = token
+        params['uid'] = uid
         params['time_stamp'] = str(time.time()).split('.')[0]
         params['client_type'] = 'android'
         params['app_version'] = '2.2.3204'
@@ -54,3 +60,8 @@ class LoginLibrary():
         result = self.getlogin(user, pwd)
         uid = result['data']['uid']
         return uid
+
+if __name__ == '__main__':
+    params = {}
+    params = LoginLibrary().addsomeparams(params, '13631276795', '123456')
+    print(params)
